@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('app.static',filename='main.css')}}">
+    <style>
+
+        *{
+            padding: 0;
+            margin: 0;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        body{
+            padding: 20px;
+        }
+        .heading{
+            font-size: 3em;
+        }
+        .form{
+            width: 60%;
+            margin: auto;
+            text-align: center;
+            padding: 20px;
+            text-transform: capitalize;
+        }
+        .form input{
+            width: 100%;
+            margin: 10px;
+            border: none;
+            border-bottom: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+        .mybtn{
+            padding: 20px;
+            background-color: black;
+            color: white;
+            outline: none;
+            border: none;
+            border-radius: 7px;
+            transition: 1.5s all;
+        }
+        .mybtn:hover{
+            color:black;
+            border: 1px solid black;
+            background-color: white;
+        }
+        .display{
+            font-size: 2em;
+        }
+    </style>
+    <title>Iris Flower classifier</title>
+</head>
+<body>
+    <center>
+        <h1 class="heading">Iris Flower Classifier</h1>
+    </center>
+    <div class="form">
+        <form action="{{url_for('app.index')}}" method="POST">
+            <label for="sepal_length">Sepal Length (centimetres)</label>
+            <input type="text" name="sepal_length">
+            <label for="sepal_length">Sepal Width (centimetres)</label>
+            <input type="text" name="sepal_width">
+            <label for="sepal_length">petal Length (centimetres)</label>
+            <input type="text" name="petal_length">
+            <label for="petal_length">petal Width (centimetres)</label>
+            <input type="text" name="petal_width">
+            <button type="submit" class="mybtn">Predict</button>
+        </form>
+        <br>
+        <br>
+        <div class="display">
+            
+            {% if target_name %}
+                the flower belongs to the class of "{{target_name}}"
+            {% endif %}
+                
+        </div>
+    </div>
+    <footer>
+        <center>
+            Built with 💜 and for fun by Ssali Jonathan &copy; <span class="year"></span>
+        </center>
+    </footer>
+    <script>
+        var year_span=document.querySelector('.year');
+
+        year_span.innerHTML=new Date().getFullYear();
+    </script>
+</body>
+</html>
